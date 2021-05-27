@@ -1,0 +1,9 @@
+.popup__container_opened {
+  max-width: 358px;
+}
+
+@media screen and (max-width: 900px) {
+  .popup__container_opened {
+    max-width: 238px;
+  }
+}

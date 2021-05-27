@@ -1,5 +1,11 @@
 .profile__info {
     max-width: 336px;
     margin: auto auto auto 30px;
-    display: inline-block;
 }
+
+@media screen and (max-width: 900px) {
+    .profile__info{
+      max-width: 282px;
+      margin: 26px auto 36px auto;
+    }
+  }

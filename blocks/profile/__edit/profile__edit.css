@@ -1,3 +1,16 @@
 .profile__edit {
-  max-width: 24px;
+  width: 24px;
+  height: 24px;
+  background: url('../../../images/Edit\ Button.svg') no-repeat center;
+  border-style: none;
+  border: #FFFFFF;
+  margin: auto 0 auto auto;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    border: #FFFFFF;
+  }
 }
