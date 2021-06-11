@@ -3,7 +3,7 @@
   height: 100vh;
   background-color: #FFFFFF;
   border-radius: 10px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   position: fixed;
