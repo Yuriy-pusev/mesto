@@ -3,3 +3,9 @@
   margin-left: 0;
   margin-top: 0;
 }
+
+@media screen and (max-width: 900px) {
+  .header__logo {
+    max-width: 104px;
+  }
+}

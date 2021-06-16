@@ -2,4 +2,14 @@
   max-width: 318px;
   color: #545454;
   margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 900px) {
+  .footer__mesto  {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

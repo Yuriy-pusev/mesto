@@ -5,6 +5,11 @@
   border-style: none;
   border: #FFFFFF;
   margin: auto 0 auto auto;
+  cursor: pointer;
+}
+
+.profile__edit:hover {
+  opacity: 60%;
 }
 
 @media screen and (max-width: 900px) {
