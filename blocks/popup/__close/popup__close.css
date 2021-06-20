@@ -20,6 +20,7 @@
   .popup__close {
     width: 26px;
     height: 26px;
+    background: url("../../../images/addclose22.svg") no-repeat center;
     transform: translate(0, -150%);
   }
 }
