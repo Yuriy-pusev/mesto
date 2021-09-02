@@ -1,0 +1,9 @@
+.element__like-activ{
+  background: url('../../../images/Union.svg') no-repeat center;
+  width: 22px;
+  height: 19px;
+  background-size: contain;
+  border-style: none;
+  margin: auto 0 auto auto;
+  padding: 0;
+}

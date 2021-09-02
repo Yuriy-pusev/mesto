@@ -1,5 +1,6 @@
-.element__list {
-  width: 100%;
-  background-color: #FFFFFF;
-  border-radius: 10px;
+.element__list { 
+  border-radius: 10px; 
+  background-color: #fff; 
+  overflow: hidden; 
+  position: relative; 
 }
