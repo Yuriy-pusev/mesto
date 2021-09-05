@@ -1,13 +1,13 @@
-.element__like { 
-  border: none; 
-  width: 20px; 
-  height: 18px; 
-  background: url('../../../images/addlike.svg') no-repeat center; 
-  background-size: contain; 
+.element__like {
+  border: none;
+  width: 20px;
+  height: 18px;
+  background: url('../../../images/addlike.svg') no-repeat center;
+  background-size: contain;
 } 
  
-.element__like:hover { 
-  cursor: pointer; 
-  opacity: .6; 
-  transition: opacity .5s ease-out; 
+.element__like:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .5s ease-out;
 }
