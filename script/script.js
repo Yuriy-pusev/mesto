@@ -16,7 +16,7 @@ const nameInput = document.querySelector('.popup__input_forms_name');
 const jobInput = document.querySelector('.popup__input_forms_job');
 const profileName = document.querySelector('.profile__title'); 
 const profileJob = document.querySelector('.profile__text');
-const popup__form = document.querySelector('.popup__form');
+const addForm = document.querySelector('.popup__form-add');
 const popupCard = document.querySelector('.popup_card'); 
 const cardHeading = popupCard.querySelector('.popup__card-heading'); 
 const elementCardPopup = popupCard.querySelector('.popup__card-image');
@@ -130,7 +130,7 @@ profileEdit.addEventListener('click', (evt) => {
 
 profileButton.addEventListener('click', (evt) => {
   
-  popup__form.reset();
+  addForm.reset();
   openPopup(evt, popupAdd);
 
 }); 
