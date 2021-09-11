@@ -92,19 +92,19 @@ function cardPopupHandler(evt) {
   elementCardPopup.alt = elementCardClick.alt; 
   cardHeading.textContent = evt.target.parentNode.querySelector('.element__title').textContent; 
  
-  openPopup(evt, popupCard); 
+  openPopup(popupCard); 
  
 }
 
 //открытие попапов
- const openPopup = (evt, element) => {
+ const openPopup = (element) => {
 
   element.classList.add('popup_open'); 
   
 } 
 
 //закрытие попапов
-const closePopup = (evt, element) => {
+const closePopup = (element) => {
 
   element.classList.remove('popup_open');
 
@@ -116,28 +116,28 @@ const formSubmitHandler = (evt, element) => {
  
   evt.preventDefault(); 
 
-  closePopup(evt, element); 
+  closePopup(element); 
 } 
  
 //слушатели событий
-profileEdit.addEventListener('click', (evt) => {
+profileEdit.addEventListener('click', () => {
 
   nameInputEdit.value = userName.textContent;
   jobInputEdit.value = aboutSelf.textContent;
-  openPopup(evt, popupEdit);
+  openPopup(popupEdit);
 
 }); 
 
-profileButton.addEventListener('click', (evt) => {
+profileButton.addEventListener('click', () => {
   
   addForm.reset();
-  openPopup(evt, popupAdd);
+  openPopup(popupAdd);
 
 }); 
 
-popupCloseEdit.addEventListener('click', evt => closePopup(evt, popupEdit)); 
-popupCloseAdd.addEventListener('click', evt => closePopup(evt, popupAdd)); 
-popupCardClose.addEventListener('click', evt => closePopup(evt, popupCard)); 
+popupCloseEdit.addEventListener('click', () => closePopup(popupEdit)); 
+popupCloseAdd.addEventListener('click', () => closePopup(popupAdd)); 
+popupCardClose.addEventListener('click', () => closePopup(popupCard)); 
 
 popupEdit.addEventListener('submit', (evt) => {
 
