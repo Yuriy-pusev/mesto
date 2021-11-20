@@ -2,7 +2,7 @@ const profile = document.querySelector('.profile');
 const userName = profile.querySelector('.profile__title'); 
 const aboutSelf = profile.querySelector('.profile__text');
 const profileEdit = document.querySelector('.profile__edit');
-const popup = document.querySelector('.popup');
+const popup = document.querySelectorAll('.popup');
 const profileButton = document.querySelector('.profile__button');
 const popupEdit = document.querySelector('.popup_edit');
 const nameInputEdit = popupEdit.querySelector('.popup__input_forms_name');
@@ -23,6 +23,8 @@ const elementCardPopup = popupCard.querySelector('.popup__card-image');
 const popupCardClose = popupCard.querySelector('.popup__close');
 const placeContainer = document.querySelector('.element');
 const placeTemplate = document.querySelector('#elements').content;
+const keyEscape = 'Escape';
+
 
 const initialCards = [
   {
@@ -92,31 +94,41 @@ function cardPopupHandler(evt) {
   elementCardPopup.alt = elementCardClick.alt; 
   cardHeading.textContent = evt.target.parentNode.querySelector('.element__title').textContent; 
  
-  openPopup(popupCard); 
+  togglePopup(popupCard); 
  
 }
 
-//открытие попапов
- const openPopup = (element) => {
-
-  element.classList.add('popup_open'); 
-  
-} 
-
-//закрытие попапов
-const closePopup = (element) => {
-
-  element.classList.remove('popup_open');
-
+//открытие-закрытие форм
+function togglePopup(element) {
+  element.classList.toggle('popup_open');
+  if (element.classList.contains('popup_open')) {
+    document.addEventListener('keydown', keyHandler);
+  }
 }
 
+//закрытие форм кнопкой Esc
+function keyHandler(evt) {
+  console.log('---', evt.key);
+
+  if (evt.key === keyEscape) {
+    document.querySelector('.popup_open').classList.remove('popup_open');
+  }
+  document.removeEventListener('keydown', keyHandler);
+}
+
+//закрытие форм при клике на оверлей
+const popupClickOnOverlay = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    togglePopup(evt.target);
+  }
+};
 
 //обработчик события submit формы 
 const formSubmitHandler = (evt, element) => { 
  
   evt.preventDefault(); 
 
-  closePopup(element); 
+  togglePopup(element); 
 } 
  
 //слушатели событий
@@ -124,20 +136,20 @@ profileEdit.addEventListener('click', () => {
 
   nameInputEdit.value = userName.textContent;
   jobInputEdit.value = aboutSelf.textContent;
-  openPopup(popupEdit);
+  togglePopup(popupEdit);
 
 }); 
 
 profileButton.addEventListener('click', () => {
   
   addForm.reset();
-  openPopup(popupAdd);
+  togglePopup(popupAdd);
 
 }); 
 
-popupCloseEdit.addEventListener('click', () => closePopup(popupEdit)); 
-popupCloseAdd.addEventListener('click', () => closePopup(popupAdd)); 
-popupCardClose.addEventListener('click', () => closePopup(popupCard)); 
+popupCloseEdit.addEventListener('click', () => togglePopup(popupEdit)); 
+popupCloseAdd.addEventListener('click', () => togglePopup(popupAdd)); 
+popupCardClose.addEventListener('click', () => togglePopup(popupCard)); 
 
 popupEdit.addEventListener('submit', (evt) => {
 
@@ -156,5 +168,8 @@ popupAdd.addEventListener('submit', (evt) => {
   formSubmitHandler(evt, popupAdd);
 
 });
+popup.forEach(el => el.addEventListener('click', popupClickOnOverlay));
 
 render();
+
+
