@@ -5,7 +5,7 @@ const inputData = {
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
+    errorClass: 'popup__error_visible',
   };
 
 const showInputError = (formElement, inputElement, errorMessage) => {
@@ -53,9 +53,11 @@ const hasInvalidInput = (inputList) => {
   
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-  buttonElement.classList.add('button_inactive');
+  buttonElement.classList.add(inputData.inactiveButtonClass);
+  buttonElement.disabled = true;
 } else {
-  buttonElement.classList.remove('button_inactive');
+  buttonElement.classList.remove(inputData.inactiveButtonClass);
+  buttonElement.disabled = false;
 }
 };
   

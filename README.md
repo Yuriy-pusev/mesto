@@ -11,5 +11,6 @@ JS
 
 **GH Pages**
 
-* [Ссылка на GH Pages](https://yuriy-pusev.github.io/mesto/)
+https://yuriy-pusev.github.io/mesto/
+
 

@@ -2,7 +2,7 @@ const profile = document.querySelector('.profile');
 const userName = profile.querySelector('.profile__title'); 
 const aboutSelf = profile.querySelector('.profile__text');
 const profileEdit = document.querySelector('.profile__edit');
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const profileButton = document.querySelector('.profile__button');
 const popupEdit = document.querySelector('.popup_edit');
 const nameInputEdit = popupEdit.querySelector('.popup__input_forms_name');
@@ -24,7 +24,6 @@ const popupCardClose = popupCard.querySelector('.popup__close');
 const placeContainer = document.querySelector('.element');
 const placeTemplate = document.querySelector('#elements').content;
 const keyEscape = 'Escape';
-
 
 const initialCards = [
   {
@@ -56,13 +55,13 @@ const initialCards = [
 // инициализация карточек 
 function render() { 
   initialCards.forEach(item => { 
-    const placeElement = addHandler(item.link, item.name); 
+    const placeElement = createCard(item.link, item.name); 
     placeContainer.append(placeElement); 
   }); 
 } 
  
 // добавление карточек 
-function addHandler(link, name) { 
+function createCard(link, name) { 
   const element = placeTemplate.cloneNode(true); 
   const elementAddImg = element.querySelector('.element__photo'); 
   elementAddImg.src = link; 
@@ -70,20 +69,25 @@ function addHandler(link, name) {
   element.querySelector('.element__title').textContent = name; 
  
   // установка обработчиков событий для карточек 
-  element.querySelector('.element__delete').addEventListener('click', delHandler); 
   element.querySelector('.element__like').addEventListener('click', likeHandler); 
   element.querySelector('.element__photo').addEventListener('click', cardPopupHandler); 
- 
+  element.querySelector('.element__delete').addEventListener('click', deleteCard); 
+
   return element; 
 } 
- 
-// удаление карточки 
-function delHandler(evt) { 
-  evt.target.parentNode.remove(); 
-} 
+
+// Удаление карточек
+
+function deleteCard(evt)
+{
+  evt.target.closest('.element__list').remove();
+
+}
+
+
  
 // установка-сброс лайка с карточки 
-function likeHandler(evt) { 
+function likeHandler(evt) {
   evt.target.classList.toggle('element__like-activ'); 
 } 
  
@@ -100,20 +104,31 @@ function cardPopupHandler(evt) {
 
 //открытие-закрытие форм
 function togglePopup(element) {
-  element.classList.toggle('popup_open');
-  if (element.classList.contains('popup_open')) {
+  element.classList.toggle('popup_opened');
+  if (element.classList.contains('popup_opened')) {
     document.addEventListener('keydown', keyHandler);
+  }
+  else
+  {
+    document.removeEventListener('keydown', keyHandler);
   }
 }
 
+
+document.querySelectorAll('.popup__input').forEach((element) => {
+  element.oninput = function(evt)
+  {
+    evt.target.value;
+  }
+})
+
 //закрытие форм кнопкой Esc
 function keyHandler(evt) {
-  console.log('---', evt.key);
 
   if (evt.key === keyEscape) {
-    document.querySelector('.popup_open').classList.remove('popup_open');
+    document.querySelector('.popup_opened').classList.remove('popup_opened');
   }
-  document.removeEventListener('keydown', keyHandler);
+  
 }
 
 //закрытие форм при клике на оверлей
@@ -162,13 +177,13 @@ popupEdit.addEventListener('submit', (evt) => {
 
 popupAdd.addEventListener('submit', (evt) => {
 
-  const placeElement = addHandler(popupImageUrl.value, popupImageName.value) 
+  const placeElement = createCard(popupImageUrl.value, popupImageName.value) 
   placeContainer.prepend(placeElement); 
 
   formSubmitHandler(evt, popupAdd);
 
 });
-popup.forEach(el => el.addEventListener('click', popupClickOnOverlay));
+popups.forEach(el => el.addEventListener('click', popupClickOnOverlay));
 
 render();
 
