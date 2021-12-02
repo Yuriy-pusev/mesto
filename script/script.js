@@ -187,4 +187,8 @@ popups.forEach(el => el.addEventListener('click', popupClickOnOverlay));
 
 render();
 
+document.addEventListener('DOMContentLoaded', function () {
+  popup.forEach(el => el.classList.add('popup__load'));
+}, false);
+
 
