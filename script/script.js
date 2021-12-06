@@ -183,11 +183,6 @@ popupAdd.addEventListener('submit', (evt) => {
   formSubmitHandler(evt, popupAdd);
 
 });
-popups.forEach(el => el.addEventListener('click', popupClickOnOverlay));
-
-document.addEventListener('DOMContentLoaded', function () {
-  popups.forEach(el => el.classList.add('popup__load'));
-}, false);
 
 render();
 
