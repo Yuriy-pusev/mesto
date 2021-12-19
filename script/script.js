@@ -107,26 +107,16 @@ function togglePopup(element) {
   element.classList.toggle('popup_opened');
   if (element.classList.contains('popup_opened')) {
     document.addEventListener('keydown', keyHandler);
-  }
-  else
-  {
+  } else {
     document.removeEventListener('keydown', keyHandler);
   }
 }
-
-
-document.querySelectorAll('.popup__input').forEach((element) => {
-  element.oninput = function(evt)
-  {
-    evt.target.value;
-  }
-})
 
 //закрытие форм кнопкой Esc
 function keyHandler(evt) {
 
   if (evt.key === keyEscape) {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    togglePopup(document.querySelector('.popup_opened'))
   }
   
 }
@@ -137,6 +127,10 @@ const popupClickOnOverlay = (evt) => {
     togglePopup(evt.target);
   }
 };
+
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', popupClickOnOverlay);
+})
 
 //обработчик события submit формы 
 const formSubmitHandler = (evt, element) => { 

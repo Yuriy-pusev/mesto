@@ -16,6 +16,11 @@
   opacity: 80%;
 }
 
+.popup__submit:invalid {
+  background: white;
+  border: 1 solid  #E5E5E5;
+}
+
 @media screen and (max-width: 900px) {
   .popup__submit{
     max-width: 238px;

@@ -43,12 +43,12 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form name="form" class="popup__form">
           <input name="name" type="text" value="Жак-Ив Кусто" placeholder="Имя"
-            id="name-input" class="popup__input popup__input_forms_name" minlength = '2' maxlength = '40' required>
-            <span class="name-input-error popup__input-error"></span>
+            id="name-input" class="popup__input popup__input_forms_name" minlength = "2" maxlength = "40" required autocomplete="off">
+            <span id="name-input-error" class="popup__input-error"></span>
           <input name="job" type="text" value="Исследователь океана" placeholder="О себе"
-          id="job-input" class="popup__input popup__input_forms_job" minlength = '2' maxlength = '200' required>
-          <span class="job-input-error popup__input-error"></span>
-          <input name="popup-submit" class="popup__submit popup__submit_disabled" type="submit" value="Сохранить">
+          id="job-input" class="popup__input popup__input_forms_job" minlength = "2" maxlength = "200" required autocomplete="off">
+          <span id="job-input-error" class="popup__input-error"></span>
+          <input name="popup-submit" class="popup__submit" type="submit" value="Сохранить">
         </form>
       </div>
     </div>
@@ -59,10 +59,10 @@
         <h2 class="popup__title">Новое место</h2>
         <form name="form-name" class="popup__form popup__form-add">
           <input name="name" type="text" placeholder="Название" id="place-input" class="popup__input popup__input_forms_name" minlength = '2' maxlength = '30' required>
-          <span class="place-input-error popup__input-error"></span>
+          <span id="place-input-error" class="popup__input-error"></span>
           <input name="alt" type="url" placeholder="Ссылка на картинку" id="url-input" class="popup__input popup__input_forms_url" required>
-          <span class="url-input-error popup__input-error"></span>
-          <input name="popup-submit" class="popup__submit popup__submit_disabled" type="submit" value="Сохранить">
+          <span id="url-input-error" class="popup__input-error"></span>
+          <input name="popup-submit" class="popup__submit" type="submit" value="Сохранить">
         </form>
       </div>
     </div>
