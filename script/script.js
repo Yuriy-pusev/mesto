@@ -24,6 +24,7 @@ const popupCardClose = popupCard.querySelector('.popup__close');
 const placeContainer = document.querySelector('.element');
 const placeTemplate = document.querySelector('#elements').content;
 const keyEscape = 'Escape';
+const popupSubmitDisabled = document.querySelector('.popup__submit_disabled');
 
 const initialCards = [
   {
@@ -78,10 +79,8 @@ function createCard(link, name) {
 
 // Удаление карточек
 
-function deleteCard(evt)
-{
+function deleteCard(evt) {
   evt.target.closest('.element__list').remove();
-
 }
 
 
@@ -97,9 +96,7 @@ function cardPopupHandler(evt) {
   elementCardPopup.src = elementCardClick.src; 
   elementCardPopup.alt = elementCardClick.alt; 
   cardHeading.textContent = evt.target.parentNode.querySelector('.element__title').textContent; 
- 
-  togglePopup(popupCard); 
- 
+  togglePopup(popupCard);
 }
 
 //открытие-закрытие форм
@@ -114,11 +111,9 @@ function togglePopup(element) {
 
 //закрытие форм кнопкой Esc
 function keyHandler(evt) {
-
   if (evt.key === keyEscape) {
     togglePopup(document.querySelector('.popup_opened'))
   }
-  
 }
 
 //закрытие форм при клике на оверлей
@@ -134,53 +129,36 @@ popups.forEach(popup => {
 
 //обработчик события submit формы 
 const formSubmitHandler = (evt, element) => { 
- 
-  evt.preventDefault(); 
-
+  evt.preventDefault();
   togglePopup(element); 
-} 
+}
  
 //слушатели событий
-profileEdit.addEventListener('click', () => {
-
+profileEdit.addEventListener('click', () => {5
   nameInputEdit.value = userName.textContent;
   jobInputEdit.value = aboutSelf.textContent;
   togglePopup(popupEdit);
-
-}); 
+});
 
 profileButton.addEventListener('click', () => {
-  
   addForm.reset();
   togglePopup(popupAdd);
+});
 
-}); 
-
-popupCloseEdit.addEventListener('click', () => togglePopup(popupEdit)); 
-popupCloseAdd.addEventListener('click', () => togglePopup(popupAdd)); 
-popupCardClose.addEventListener('click', () => togglePopup(popupCard)); 
+popupCloseEdit.addEventListener('click', () => togglePopup(popupEdit));
+popupCloseAdd.addEventListener('click', () => togglePopup(popupAdd));
+popupCardClose.addEventListener('click', () => togglePopup(popupCard));
 
 popupEdit.addEventListener('submit', (evt) => {
-
-  userName.textContent = nameInputEdit.value; 
+  userName.textContent = nameInputEdit.value;
   aboutSelf.textContent = jobInputEdit.value;
-
   formSubmitHandler(evt, popupEdit);
-
-}); 
+});
 
 popupAdd.addEventListener('submit', (evt) => {
-
-  const placeElement = createCard(popupImageUrl.value, popupImageName.value) 
-  placeContainer.prepend(placeElement); 
-
+  const placeElement = createCard(popupImageUrl.value, popupImageName.value);
+  placeContainer.prepend(placeElement);
   formSubmitHandler(evt, popupAdd);
-
 });
 
 render();
-
-
-
-
-
